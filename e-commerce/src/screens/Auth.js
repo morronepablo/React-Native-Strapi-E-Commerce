@@ -5,7 +5,7 @@ import logo from "../../assets/logo.png";
 import { layoutStyle } from "../styles";
 
 export default function Auth() {
-    const [showLogin, setShowLogin] = useState(false);
+    const [showLogin, setShowLogin] = useState(true);
 
     const changeForm = () => setShowLogin(!showLogin);
 
