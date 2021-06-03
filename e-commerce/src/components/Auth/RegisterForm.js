@@ -10,6 +10,7 @@ export default function RegisterForm(props) {
 
     const formik = useFormik({
         initialValues: initialValues(),
+        validationSchema: Yup.object(validationSchema()),
         onSubmit: (formData) => {
             console.log("Registro de usuario enviado");
             console.log(formData);
@@ -22,22 +23,30 @@ export default function RegisterForm(props) {
                 label="Email" 
                 style={formStyle.input} 
                 onChangeText={(text) => formik.setFieldValue("email", text)}
+                value={formik.values.email}
+                error={formik.errors.email}
             />
             <TextInput 
                 label="Nombre de usuario" 
                 style={formStyle.input} 
                 onChangeText={(text) => formik.setFieldValue("username", text)}
+                value={formik.values.username}
+                error={formik.errors.username}
             />
             <TextInput 
                 label="Contraseña" 
                 style={formStyle.input}
                 onChangeText={(text) => formik.setFieldValue("password", text)} 
+                value={formik.values.password}
+                error={formik.errors.password}
                 secureTextEntry 
             />
             <TextInput 
                 label="Repetir contraseña" 
                 style={formStyle.input} 
                 onChangeText={(text) => formik.setFieldValue("repeatPassword", text)}
+                value={formik.values.repeatPassword}
+                error={formik.errors.repeatPassword}
                 secureTextEntry 
             />
             <Button 
@@ -66,4 +75,13 @@ function initialValues() {
         password: "",
         repeatPassword: ""
     }
+}
+
+function validationSchema() {
+    return {
+        email: Yup.string().email(true).required(true),
+        username: Yup.string().required(true),
+        password: Yup.string().required(true),
+        repeatPassword: Yup.string().required(true).oneOf([Yup.ref("password")], true),
+    };
 }
