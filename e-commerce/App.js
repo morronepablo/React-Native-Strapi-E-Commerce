@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 import { Provider as PaperProvider } from "react-native-paper";
 import AuthSreen from "./src/screens/Auth";
 import AuthContext from "./src/context/AuthContext";
+import { setTokenApi } from "./src/api/token";
 
 export default function App() {
   const [auth, setAuth] = useState(undefined);
@@ -11,10 +12,18 @@ export default function App() {
     setAuth(null);
   }, []);
 
+  const login = (user) => {
+    setTokenApi(user.jwt);
+    setAuth({
+      token: user.jwt,
+      idUser: user.user._id,
+    });
+  }
+
   const authData = useMemo(
     () => ({
       auth,
-      login: () => null,
+      login,
       logout: () => null,
     }),
     [auth]
