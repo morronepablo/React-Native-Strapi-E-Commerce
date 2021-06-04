@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Text } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import { Provider as PaperProvider } from "react-native-paper";
 import jwtDecode from "jwt-decode";
 import AuthSreen from "./src/screens/Auth";
 import AuthContext from "./src/context/AuthContext";
-import { setTokenApi, getTokenApi } from "./src/api/token";
+import { setTokenApi, getTokenApi, removeTokenApi } from "./src/api/token";
 
 export default function App() {
   const [auth, setAuth] = useState(undefined);
@@ -29,13 +29,20 @@ export default function App() {
       token: user.jwt,
       idUser: user.user._id,
     });
-  }
+  };
+
+  const logout = () => {
+    if(auth) {
+      removeTokenApi();
+      setAuth(null);
+    }
+  };
 
   const authData = useMemo(
     () => ({
       auth,
       login,
-      logout: () => null,
+      logout,
     }),
     [auth]
   );
@@ -45,7 +52,14 @@ export default function App() {
   return (
     <AuthContext.Provider value={authData}>
       <PaperProvider>
-        {auth ? <Text>Zona de usuarios</Text> : <AuthSreen />}
+        {auth ? (
+          <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+            <Text>Zona de usuarios</Text>
+            <Button title="Cerrar sesión" onPress={authData.logout} />
+          </View>
+        ) : (
+          <AuthSreen />
+        )}
       </PaperProvider>
     </AuthContext.Provider>
   );
