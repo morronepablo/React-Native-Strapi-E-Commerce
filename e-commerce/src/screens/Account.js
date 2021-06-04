@@ -1,18 +1,17 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { ScrollView, Text } from 'react-native';
+import StatusBar from "../components/StatusBar";
+import Search from "../components/Search";
+import colors from "../styles/colors";
 
 export default function Account() {
     return (
-        <View style={styles.container}>
-            <Text>Estamos en MI CUENTA</Text>
-        </View>
+        <>
+            <StatusBar backgroundColor={colors.bgDark} barStyle="light-content" />
+            <Search />
+            <ScrollView>
+                <Text>Estamos en MI CUENTA</Text>
+            </ScrollView>
+        </>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-});
