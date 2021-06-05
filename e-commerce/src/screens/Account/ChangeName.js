@@ -4,12 +4,16 @@ import { TextInput, Button } from "react-native-paper";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Toast from "react-native-root-toast";
+import StatusBar from "../../components/StatusBar";
 import { getMeApi, updateUserApi } from "../../api/user";
 import useAuth from "../../hooks/useAuth";
 import { formStyle } from "../../styles";
 
 export default function ChangeName() {
     const { auth } = useAuth();
+    const [loading, setLoading] = useState(false);
+    const navigation = useNavigation();
 
     useFocusEffect(
         useCallback(() => {
@@ -23,14 +27,22 @@ export default function ChangeName() {
         }, [])
       );
 
-    const formik = useFormik({
+      const formik = useFormik({
         initialValues: initialValues(),
         validationSchema: Yup.object(validationSchema()),
-        onSubmit: (formData) => {
-            console.log("Formulario enviado...");
-            console.log(formData);
-        }
-    });
+        onSubmit: async (formData) => {
+          setLoading(true);
+          try {
+            await updateUserApi(auth, formData);
+            navigation.goBack();
+          } catch (error) {
+            Toast.show("Error al actualizar los datos.", {
+              position: Toast.positions.CENTER,
+            });
+          }
+          setLoading(false);
+        },
+      });
 
     return (
         <View style={styles.container}>
@@ -52,6 +64,7 @@ export default function ChangeName() {
                 mode="contained"
                 style={formStyle.btnSucces}
                 onPress={formik.handleSubmit}
+                loading={loading}
             >
                 cambiar nombre y apellidos
             </Button>
