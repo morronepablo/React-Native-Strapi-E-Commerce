@@ -12,7 +12,6 @@ import useAuth from "../../hooks/useAuth";
 import colors from "../../styles/colors";
 import { formStyle } from "../../styles";
 
-
 export default function ChangePassword() {
     const { auth } = useAuth();
     const [loading, setLoading] = useState(false);
@@ -35,7 +34,7 @@ export default function ChangePassword() {
         setLoading(false);
       },
     });
-    
+
     return (
         <>
             <StatusBar backgroundColor={colors.bgDark} barStyle="light-content" />
