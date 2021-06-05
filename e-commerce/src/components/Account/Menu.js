@@ -39,7 +39,7 @@ export default function Menu() {
                     title="Cambiar email"
                     description="Cambia el email de tu cuenta"
                     left={(props) => <List.Icon {...props} icon="at" />}
-                    onPress={() => console.log("Ir a cambiar el email")}
+                    onPress={() => navigation.navigate("change-email")}
                 />
                 <List.Item 
                     title="Cambiar username"

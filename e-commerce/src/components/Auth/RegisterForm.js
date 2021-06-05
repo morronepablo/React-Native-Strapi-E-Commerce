@@ -30,52 +30,54 @@ export default function RegisterForm(props) {
 
     return (
         <View>
-            <TextInput 
-                label="Email" 
-                style={formStyle.input} 
-                onChangeText={(text) => formik.setFieldValue("email", text)}
-                value={formik.values.email}
-                error={formik.errors.email}
-            />
-            <TextInput 
-                label="Nombre de usuario" 
-                style={formStyle.input} 
-                onChangeText={(text) => formik.setFieldValue("username", text)}
-                value={formik.values.username}
-                error={formik.errors.username}
-            />
-            <TextInput 
-                label="Contraseña" 
-                style={formStyle.input}
-                onChangeText={(text) => formik.setFieldValue("password", text)} 
-                value={formik.values.password}
-                error={formik.errors.password}
-                secureTextEntry 
-            />
-            <TextInput 
-                label="Repetir contraseña" 
-                style={formStyle.input} 
-                onChangeText={(text) => formik.setFieldValue("repeatPassword", text)}
-                value={formik.values.repeatPassword}
-                error={formik.errors.repeatPassword}
-                secureTextEntry 
-            />
-            <Button 
-                mode="contained" 
-                style={formStyle.btnSucces} 
-                onPress={formik.handleSubmit}
-                loading={loading}
-            >
-                Registrarse
-            </Button>
-            <Button 
-                mode="text" 
-                style={formStyle.btnText} 
-                labelStyle={formStyle.btnTextLabel} 
-                onPress={changeForm}
-            >
-                Iniciar sesión
-            </Button>
+            <RootSiblingParent>
+                <TextInput 
+                    label="Email" 
+                    style={formStyle.input} 
+                    onChangeText={(text) => formik.setFieldValue("email", text)}
+                    value={formik.values.email}
+                    error={formik.errors.email}
+                />
+                <TextInput 
+                    label="Nombre de usuario" 
+                    style={formStyle.input} 
+                    onChangeText={(text) => formik.setFieldValue("username", text)}
+                    value={formik.values.username}
+                    error={formik.errors.username}
+                />
+                <TextInput 
+                    label="Contraseña" 
+                    style={formStyle.input}
+                    onChangeText={(text) => formik.setFieldValue("password", text)} 
+                    value={formik.values.password}
+                    error={formik.errors.password}
+                    secureTextEntry 
+                />
+                <TextInput 
+                    label="Repetir contraseña" 
+                    style={formStyle.input} 
+                    onChangeText={(text) => formik.setFieldValue("repeatPassword", text)}
+                    value={formik.values.repeatPassword}
+                    error={formik.errors.repeatPassword}
+                    secureTextEntry 
+                />
+                <Button 
+                    mode="contained" 
+                    style={formStyle.btnSucces} 
+                    onPress={formik.handleSubmit}
+                    loading={loading}
+                >
+                    Registrarse
+                </Button>
+                <Button 
+                    mode="text" 
+                    style={formStyle.btnText} 
+                    labelStyle={formStyle.btnTextLabel} 
+                    onPress={changeForm}
+                >
+                    Iniciar sesión
+                </Button>
+        </RootSiblingParent>
         </View>
     );
 }
