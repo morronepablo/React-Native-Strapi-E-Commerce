@@ -49,23 +49,23 @@ export default function ChangeEmail() {
     <>
       <StatusBar backgroundColor={colors.bgDark} barStyle="light-content" />
       <View style={styles.container}>
-            <RootSiblingParent>
-                <TextInput
-                label="Email"
-                style={formStyle.input}
-                onChangeText={(text) => formik.setFieldValue("email", text)}
-                value={formik.values.email}
-                error={formik.errors.email}
-                />
-                <Button
-                mode="contained"
-                style={formStyle.btnSucces}
-                onPress={formik.handleSubmit}
-                loading={loading}
-                >
-                Cambiar email
-                </Button>
-            </RootSiblingParent>
+        <RootSiblingParent>
+            <TextInput
+            label="Email"
+            style={formStyle.input}
+            onChangeText={(text) => formik.setFieldValue("email", text)}
+            value={formik.values.email}
+            error={formik.errors.email}
+            />
+            <Button
+            mode="contained"
+            style={formStyle.btnSucces}
+            onPress={formik.handleSubmit}
+            loading={loading}
+            >
+            Cambiar email
+            </Button>
+        </RootSiblingParent>
       </View>
     </>
   );
