@@ -56,3 +56,21 @@ export async function addAddressApi(auth, address) {
       return null;
     }
   }
+
+  export async function getAddressApi(auth, idAddress) {
+    try {
+      const url = `${API_URL}/addresses/${idAddress}`;
+      const params = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${auth.token}`,
+        },
+      };
+      const response = await fetch(url, params);
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  }

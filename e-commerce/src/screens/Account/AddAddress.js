@@ -38,6 +38,7 @@ export default function AddAddress(props) {
         await formik.setFieldValue("country", response.country);
         await formik.setFieldValue("phone", response.phone);
         setNewAddress(false);
+        navigation.setOptions({ title: "Actualizar dirección" });
       }
     })();
   }, [params]);
