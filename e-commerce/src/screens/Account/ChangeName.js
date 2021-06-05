@@ -1,10 +1,32 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { TextInput, Button } from "react-native-paper";
+import { formStyle } from "../../styles";
 
 export default function ChangeName() {
     return (
-        <View>
-            <Text>Change name...</Text>
+        <View style={styles.container}>
+            <TextInput 
+                label="Nombre"
+                style={formStyle.input}
+            />
+            <TextInput 
+                label="Apellidos"
+                style={formStyle.input}
+            />
+            <Button
+                mode="contained"
+                style={formStyle.btnSucces}
+                onPress={() => console.log("Formulario enviado...")}
+            >
+                cambiar nombre y apellidos
+            </Button>
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        padding: 20,
+    },
+});
