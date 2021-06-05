@@ -4,7 +4,7 @@ import { Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
 import { map } from "lodash";
 import useAuth from "../../hooks/useAuth";
-//import { deleteAddressApi } from "../../api/address";
+import { deleteAddressApi } from "../../api/address";
 import colors from "../../styles/colors";
 
 export default function AddressList(props) {
