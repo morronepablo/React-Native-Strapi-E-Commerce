@@ -8,17 +8,17 @@ import {
     ActivityIndicator
 } from 'react-native';
 import { IconButton } from "react-native-paper";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { useFocusEffect } from "@react-navigation/native";
 import { size } from "lodash";
 import { getAddressesApi } from "../../api/address";
 import useAuth from "../../hooks/useAuth";
+import { RootSiblingParent } from "react-native-root-siblings";
 import StatusBar from "../../components/StatusBar";
 import colors from "../../styles/colors";
 
 export default function Addresses() {
     const [addresses, setAddresses] = useState(null);
     const { auth } = useAuth();
-    const navigation = useNavigation();
 
     useFocusEffect(
         useCallback(
@@ -36,20 +36,22 @@ export default function Addresses() {
         <>
             <StatusBar backgroundColor={colors.bgDark} barStyle="light-content" />
             <ScrollView style={styles.container}>
-                <Text style={styles.title}>Mis direcciones</Text>
-                <TouchableWithoutFeedback onPress={() => navigation.navigate("add-address")}>
-                    <View style={styles.addAddress}>
-                        <Text style={styles.addAddressText}>Añadir una dirección</Text>
-                        <IconButton icon="arrow-right" color="#000" size={19} />
-                    </View>
-                </TouchableWithoutFeedback>
-                {!addresses ? (
-                    <ActivityIndicator size="large" style={styles.loading} />
-                ) : size(addresses) === 0 ? (
-                    <Text style={styles.noAddressText}>Crea tu primera dirección</Text>
-                ) : (
-                    <Text>Listado de direcciones</Text>
-                )}
+                
+                    <Text style={styles.title}>Mis direcciones</Text>
+                    <TouchableWithoutFeedback onPress={() => console.log("Creando nueva dirección")}>
+                        <View style={styles.addAddress}>
+                            <Text style={styles.addAddressText}>Añadir una dirección</Text>
+                            <IconButton icon="arrow-right" color="#000" size={19} />
+                        </View>
+                    </TouchableWithoutFeedback>
+                    {!addresses ? (
+                        <ActivityIndicator size="large" style={styles.loading} />
+                    ) : size(addresses) === 0 ? (
+                        <Text style={styles.noAddressText}>Crea tu primera dirección</Text>
+                    ) : (
+                        <Text>Listado de direcciones</Text>
+                    )}
+                
             </ScrollView>
         </>
     );
@@ -81,7 +83,5 @@ const styles = StyleSheet.create({
     },
     noAddressText: {
         fontSize: 16,
-        marginTop: 10,
-        textAlign: "center",
     },
 });
