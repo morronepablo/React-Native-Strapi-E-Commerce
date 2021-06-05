@@ -1,11 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { ScrollView, Text } from 'react-native';
 import { useFocusEffect } from "@react-navigation/native";
-import StatusBar from "../components/StatusBar";
-import Search from "../components/Search";
-import { getMeApi } from "../api/user";
-import useAuth from "../hooks/useAuth";
-import colors from "../styles/colors";
+import StatusBar from "../../components/StatusBar";
+import Search from "../../components/Search";
+import { getMeApi } from "../../api/user";
+import useAuth from "../../hooks/useAuth";
+import colors from "../../styles/colors";
 
 export default function Account() {
     const [user, setUser] = useState(null);
@@ -16,7 +16,7 @@ export default function Account() {
         useCallback(() => {
             (async () => {
                 const response = await getMeApi(auth.token);
-                console.log(response);
+                setUser(response);
             })();
         }, [])
     );   
