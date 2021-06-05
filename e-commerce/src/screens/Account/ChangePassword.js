@@ -14,6 +14,28 @@ import { formStyle } from "../../styles";
 
 
 export default function ChangePassword() {
+    const { auth } = useAuth();
+    const [loading, setLoading] = useState(false);
+    const navigation = useNavigation();
+  
+    const formik = useFormik({
+      initialValues: initialValues(),
+      validationSchema: Yup.object(validationSchema()),
+      onSubmit: async (formData) => {
+        setLoading(true);
+        try {
+          const response = await updateUserApi(auth, formData);
+          if (response.statusCode) throw "Error al cambiar la contraseña";
+          navigation.goBack();
+        } catch (error) {
+          Toast.show(error, {
+            position: Toast.positions.CENTER,
+          });
+        }
+        setLoading(false);
+      },
+    });
+    
     return (
         <>
             <StatusBar backgroundColor={colors.bgDark} barStyle="light-content" />
@@ -49,8 +71,25 @@ export default function ChangePassword() {
     );
 }
 
+function initialValues() {
+    return {
+      password: "",
+      repeatPassword: "",
+    };
+}
+  
+  function validationSchema() {
+    return {
+      password: Yup.string().min(4).required(true),
+      repeatPassword: Yup.string()
+        .min(4)
+        .oneOf([Yup.ref("password")], true)
+        .required(true),
+    };
+}
+
 var styles = StyleSheet.create({
     container: {
       padding: 20,
     },
-  });
+});
