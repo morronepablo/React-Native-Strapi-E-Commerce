@@ -51,7 +51,7 @@ export default function Menu() {
                     title="Cambiar contraseña"
                     description="Cambia la contraseña de tu cuenta"
                     left={(props) => <List.Icon {...props} icon="key" />}
-                    onPress={() => console.log("Ir a cambiar la contraseña")}
+                    onPress={() => navigation.navigate("change-password")}
                 />
                 <List.Item 
                     title="Mis direcciones"
