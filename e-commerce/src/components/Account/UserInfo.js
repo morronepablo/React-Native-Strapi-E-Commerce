@@ -6,7 +6,7 @@ export default function UserInfo(props) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Bienvenido,</Text>
+            <Text style={styles.title}>Bienvenido/a,</Text>
             <Text style={styles.titleName}>
                 {user.name && user.lastname 
                     ? `${user.name} ${user.lastname}` 

@@ -1,10 +1,29 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { Alert } from 'react-native';
 import { List } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+import useAuth from "../../hooks/useAuth";
 
 export default function Menu() {
     const navigation = useNavigation();
+    const { logout } = useAuth();
+
+    const logoutAccount = () => {
+        Alert.alert(
+            "Cerror sesión",
+            "¿Estas seguro de que quieres salir de tu cuenta?",
+            [
+                {
+                    text: "NO",
+                },
+                {
+                    text: "SI",
+                    onPress: logout,
+                },
+            ],
+            { cancelable: false }
+        );
+    };
 
     return (
         <>
@@ -14,7 +33,7 @@ export default function Menu() {
                     title="Cambiar nombre"
                     description="Cambia el nombre de tu cuenta"
                     left={(props) => <List.Icon {...props} icon="face" />}
-                    onPress={() => console.log("Ir a cambiar elnombre")}
+                    onPress={() => navigation.navigate("change-name")}
                 />
                 <List.Item 
                     title="Cambiar email"
@@ -59,24 +78,10 @@ export default function Menu() {
                     title="Cerrar sesión"
                     description="Cierra esta sesión e inicia con otra"
                     left={(props) => <List.Icon {...props} icon="logout" />}
-                    onPress={() => console.log("Cerrar sesión")}
+                    onPress={logoutAccount}
                 />
             </List.Section>
         </>
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        height: 100,
-        justifyContent: 'center',
-        padding: 20,
-    },
-    title: {
-        fontSize: 20,
-    },
-    titleName: {
-        fontSize: 20,
-        fontWeight: "bold",
-    },
-});
