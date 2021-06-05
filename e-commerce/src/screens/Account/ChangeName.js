@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useState, useCallback } from "react";
 import { StyleSheet, View } from 'react-native';
 import { TextInput, Button } from "react-native-paper";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { getMeApi, updateUserApi } from "../../api/user";
+import useAuth from "../../hooks/useAuth";
 import { formStyle } from "../../styles";
 
 export default function ChangeName() {
+    const { auth } = useAuth();
+
+    useFocusEffect(
+        useCallback(() => {
+          (async () => {
+            const response = await getMeApi(auth.token);
+            if(response.name && response.lastname) {
+                await formik.setFieldValue("name", response.name);
+                await formik.setFieldValue("lastname", response.lastname);
+            }
+          })();
+        }, [])
+      );
 
     const formik = useFormik({
         initialValues: initialValues(),
