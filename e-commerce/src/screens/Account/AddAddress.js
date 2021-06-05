@@ -7,7 +7,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import StatusBar from "../../components/StatusBar";
 import {
-  addAddressApi
+  addAddressApi,
+  getAddressApi
 } from "../../api/address";
 import useAuth from "../../hooks/useAuth";
 import colors from "../../styles/colors";
@@ -23,23 +24,23 @@ export default function AddAddress(props) {
   const navigation = useNavigation();
 
 
-//   useEffect(() => {
-//     (async () => {
-//       if (params?.idAddress) {
-//         const response = await getAddressApi(auth, params.idAddress);
-//         await formik.setFieldValue("_id", response._id);
-//         await formik.setFieldValue("title", response.title);
-//         await formik.setFieldValue("name_lastname", response.name_lastname);
-//         await formik.setFieldValue("address", response.address);
-//         await formik.setFieldValue("postal_code", response.postal_code);
-//         await formik.setFieldValue("city", response.city);
-//         await formik.setFieldValue("state", response.state);
-//         await formik.setFieldValue("country", response.country);
-//         await formik.setFieldValue("phone", response.phone);
-//         setNewAddress(false);
-//       }
-//     })();
-//   }, [params]);
+  useEffect(() => {
+    (async () => {
+      if (params?.idAddress) {
+        const response = await getAddressApi(auth, params.idAddress);
+        await formik.setFieldValue("_id", response._id);
+        await formik.setFieldValue("title", response.title);
+        await formik.setFieldValue("name_lastname", response.name_lastname);
+        await formik.setFieldValue("address", response.address);
+        await formik.setFieldValue("postal_code", response.postal_code);
+        await formik.setFieldValue("city", response.city);
+        await formik.setFieldValue("state", response.state);
+        await formik.setFieldValue("country", response.country);
+        await formik.setFieldValue("phone", response.phone);
+        setNewAddress(false);
+      }
+    })();
+  }, [params]);
 
   const formik = useFormik({
     initialValues: initialValues(),
