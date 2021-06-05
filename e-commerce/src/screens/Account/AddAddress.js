@@ -8,7 +8,8 @@ import * as Yup from "yup";
 import StatusBar from "../../components/StatusBar";
 import {
   addAddressApi,
-  getAddressApi
+  getAddressApi,
+  updateAddressApi
 } from "../../api/address";
 import useAuth from "../../hooks/useAuth";
 import colors from "../../styles/colors";
