@@ -6,11 +6,9 @@ import { useNavigation } from "@react-navigation/native";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import StatusBar from "../../components/StatusBar";
-// import {
-//   addAddressApi,
-//   getAddressApi,
-//   updateAddressApi,
-// } from "../../api/address";
+import {
+  addAddressApi
+} from "../../api/address";
 import useAuth from "../../hooks/useAuth";
 import colors from "../../styles/colors";
 import { formStyle } from "../../styles";
@@ -24,7 +22,7 @@ export default function AddAddress(props) {
   const { auth } = useAuth();
   const navigation = useNavigation();
 
-  
+
 //   useEffect(() => {
 //     (async () => {
 //       if (params?.idAddress) {
