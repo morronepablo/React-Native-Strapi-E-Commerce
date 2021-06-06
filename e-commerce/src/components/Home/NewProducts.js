@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
-//import ListProduct from "./ListProduct";
+import ListProduct from "./ListProduct";
 import { getLastProuctsApi } from "../../api/product";
 
 export default function NewProducts() {
@@ -16,7 +16,7 @@ export default function NewProducts() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Nuevos productos</Text>
-      {/* {products && <ListProduct products={products} />} */}
+      {products && <ListProduct products={products} />}
     </View>
   );
 }
