@@ -5,7 +5,7 @@ import Search from "../../components/Search";
 import ScreenLoading from "../../components/ScreenLoading";
 import CarouselImages from "../../components/Product/CarouselImages";
 import Price from "../../components/Product/Price";
-//import Quantity from "../../components/Product/Quantity";
+import Quantity from "../../components/Product/Quantity";
 //import Buy from "../../components/Product/Buy";
 //import Favorite from "../../components/Product/Favorite";
 import { getProductApi } from "../../api/product";
@@ -41,12 +41,9 @@ export default function Product(props) {
           <CarouselImages images={images} />
           <View style={styles.containerView}>
             <Price price={product.price} discount={product.discount} />
-              {/* <Price price={product.price} discount={product.discount} /> */}
+            <Quantity />
           </View>
           
-          {/* <Quantity quantity={quantity} setQuantity={setQuantity} /> */}
-          {/* <Buy product={product} quantity={quantity} /> */}
-          {/* <Favorite product={product} /> */}
         </ScrollView>
       )}
     </>
@@ -61,20 +58,10 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 20,
-    marginBottom: 20,
+    marginBottom: -30,
     padding: 10,
   },
   containerView: {
     padding: 10,
-  },
-  btnBuyContent: {
-    backgroundColor: "#008fe9",
-    paddingVertical: 5,
-  },
-  btnBuyLabel: {
-    fontSize: 18,
-  },
-  btnBuy: {
-    marginTop: 20,
   },
 });
