@@ -4,7 +4,7 @@ import StatusBar from "../../components/StatusBar";
 import Search from "../../components/Search";
 import ScreenLoading from "../../components/ScreenLoading";
 import CarouselImages from "../../components/Product/CarouselImages";
-//import Price from "../../components/Product/Price";
+import Price from "../../components/Product/Price";
 //import Quantity from "../../components/Product/Quantity";
 //import Buy from "../../components/Product/Buy";
 //import Favorite from "../../components/Product/Favorite";
@@ -40,9 +40,10 @@ export default function Product(props) {
           <Text style={styles.title}>{product.title}</Text>
           <CarouselImages images={images} />
           <View style={styles.containerView}>
-              <Text>BTN</Text>
+            <Price price={product.price} discount={product.discount} />
+              {/* <Price price={product.price} discount={product.discount} /> */}
           </View>
-          {/* <Price price={product.price} discount={product.discount} /> */}
+          
           {/* <Quantity quantity={quantity} setQuantity={setQuantity} /> */}
           {/* <Buy product={product} quantity={quantity} /> */}
           {/* <Favorite product={product} /> */}
