@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, ScrollView, Text } from "react-native";
 import StatusBar from "../../components/StatusBar";
 import Search from "../../components/Search";
-import ScreenLoading from "../../components/ScreenLoading";
-import CarouselImages from "../../components/Product/CarouselImages";
-import Price from "../../components/Product/Price";
-import Quantity from "../../components/Product/Quantity";
-import Buy from "../../components/Product/Buy";
-import Favorite from "../../components/Product/Favorite";
+//import ScreenLoading from "../../components/ScreenLoading";
+//import CarouselImages from "../../components/Product/CarouselImages";
+//import Price from "../../components/Product/Price";
+//import Quantity from "../../components/Product/Quantity";
+//import Buy from "../../components/Product/Buy";
+//import Favorite from "../../components/Product/Favorite";
 import { getProductApi } from "../../api/product";
 import colors from "../../styles/colors";
 
@@ -15,8 +15,8 @@ export default function Product(props) {
   const { route } = props;
   const { params } = route;
   const [product, setProduct] = useState(null);
-  const [images, setImages] = useState([]);
-  const [quantity, setQuantity] = useState(1);
+  //const [images, setImages] = useState([]);
+  //const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     (async () => {
