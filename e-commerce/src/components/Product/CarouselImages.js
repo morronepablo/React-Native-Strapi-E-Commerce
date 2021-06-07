@@ -40,6 +40,7 @@ export default function CarouselImages(props) {
   );
 }
 
+
 const styles = StyleSheet.create({
   carousel: {
     width,
