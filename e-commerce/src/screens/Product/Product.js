@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, ScrollView, Text } from "react-native";
 import StatusBar from "../../components/StatusBar";
 import Search from "../../components/Search";
-//import ScreenLoading from "../../components/ScreenLoading";
+import ScreenLoading from "../../components/ScreenLoading";
 //import CarouselImages from "../../components/Product/CarouselImages";
 //import Price from "../../components/Product/Price";
 //import Quantity from "../../components/Product/Quantity";
@@ -23,9 +23,9 @@ export default function Product(props) {
       const response = await getProductApi(params.idProduct);
       setProduct(response);
 
-      const arrayImages = [response.main_image];
-      arrayImages.push(...response.images);
-      setImages(arrayImages);
+      //const arrayImages = [response.main_image];
+      //arrayImages.push(...response.images);
+      //setImages(arrayImages);
     })();
   }, [params]);
 
@@ -38,11 +38,11 @@ export default function Product(props) {
       ) : (
         <ScrollView contentContainerStyle={styles.container}>
           <Text style={styles.title}>{product.title}</Text>
-          <CarouselImages images={images} />
-          <Price price={product.price} discount={product.discount} />
-          <Quantity quantity={quantity} setQuantity={setQuantity} />
-          <Buy product={product} quantity={quantity} />
-          <Favorite product={product} />
+          {/* <CarouselImages images={images} /> */}
+          {/* <Price price={product.price} discount={product.discount} /> */}
+          {/* <Quantity quantity={quantity} setQuantity={setQuantity} /> */}
+          {/* <Buy product={product} quantity={quantity} /> */}
+          {/* <Favorite product={product} /> */}
         </ScrollView>
       )}
     </>
