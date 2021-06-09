@@ -63,5 +63,6 @@ const styles = StyleSheet.create({
   },
   containerView: {
     padding: 10,
+    paddingBottom: 200,
   },
 });
